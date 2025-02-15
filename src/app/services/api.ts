@@ -38,7 +38,7 @@ class ApiError extends Error {
     },
   
     getCountryByCode: (code: string) => 
-      fetchApi<Country>(`/countries/${code}`),
+      fetchApi<Country>(`/countrie/${code}`),
   
     getCountriesByRegion: (region: string) => 
       fetchApi<Country[]>(`/countries/region/${region}`),
