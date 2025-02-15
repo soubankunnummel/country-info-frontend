@@ -40,11 +40,11 @@ class ApiError extends Error {
     getCountryByCode: (code: string) => 
       fetchApi<Country>(`/countrie/${code}`),
   
-    getCountriesByRegion: (region: string) => 
-      fetchApi<Country[]>(`/countries/region/${region}`),
+    // getCountriesByRegion: (region: string) => 
+    //   fetchApi<Country[]>(`/countries/region/${region}`),
     
-    getCountriesByCapital: (capital: string) =>
-      fetchApi<Country[]>(`/countries/capital/${capital}`),
+    // getCountriesByCapital: (capital: string) =>
+    //   fetchApi<Country[]>(`/countries/capital/${capital}`),
   
     searchCountries: (params: CountrySearchParams) => {
       const searchParams = new URLSearchParams();

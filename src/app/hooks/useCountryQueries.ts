@@ -46,24 +46,24 @@ export const useCountries = (params: CountrySearchParams = {}) => {
   };
 
 
-  export const useCountryRegion = (region: string) => {
-    return useQuery({
-      queryKey: ['country', region],
-      queryFn: () => countryApi.getCountriesByRegion(region),
-      enabled: !!region,
-      staleTime: 5 * 60 * 1000,
-      gcTime: 10 * 60 * 1000,
-    });
-  };
-  export const useCountryCapital = (capital: string) => {
-    return useQuery({
-      queryKey: ['country', capital],
-      queryFn: () => countryApi.getCountriesByCapital(capital),
-      enabled: !!capital,
-      staleTime: 5 * 60 * 1000,
-      gcTime: 10 * 60 * 1000,
-    });
-  };
+  // export const useCountryRegion = (region: string) => {
+  //   return useQuery({
+  //     queryKey: ['country', region],
+  //     queryFn: () => countryApi.getCountriesByRegion(region),
+  //     enabled: !!region,
+  //     staleTime: 5 * 60 * 1000,
+  //     gcTime: 10 * 60 * 1000,
+  //   });
+  // };
+  // export const useCountryCapital = (capital: string) => {
+  //   return useQuery({
+  //     queryKey: ['country', capital],
+  //     queryFn: () => countryApi.getCountriesByCapital(capital),
+  //     enabled: !!capital,
+  //     staleTime: 5 * 60 * 1000,
+  //     gcTime: 10 * 60 * 1000,
+  //   });
+  // };
 
 //   export const useSearchCountries = (params: CountrySearchParams) => {
 //     return useQuery({
