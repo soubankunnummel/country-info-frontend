@@ -23,6 +23,7 @@ export interface Country {
     languages?: {
       [key: string]: string;
     };
+    status: string;
   }
   
   export interface CountrySearchParams {

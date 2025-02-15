@@ -10,6 +10,7 @@ export default function CountryDetailPage() {
   const router = useRouter();
   const { data: country, isLoading } = useCountry(params.code as string);
 
+
   if (isLoading) {
     return (
       <div className="container mx-auto p-6">
@@ -28,8 +29,8 @@ export default function CountryDetailPage() {
       </div>
     );
   }
-
-  if (!country) {
+// console.log(`show country page ${JSON.stringify(country.status === "error")}`)
+  if (country?.status === "error") {
     return (
       <div className="container mx-auto p-6 text-center">
         <h1 className="text-2xl font-bold mb-4">Country not found</h1>
@@ -56,16 +57,16 @@ export default function CountryDetailPage() {
         <div className="p-6 border-b">
           <div className="flex items-center gap-4">
             <Image
-              src={country.flags.png}
-              alt={`${country.name.common} flag`}
+              src={country?.flags?.png ?? ""}
+              alt={`${country?.name?.common} flag`}
               className="w-16 h-auto"
               width={100}
               height={100}
               
             />
             <div>
-              <h1 className="text-3xl font-bold">{country.name.common}</h1>
-              <p className="text-gray-500">{country.name.official}</p>
+              <h1 className="text-3xl font-bold">{country?.name?.common}</h1>
+              <p className="text-gray-500">{country?.name?.official}</p>
             </div>
           </div>
         </div>
@@ -78,16 +79,16 @@ export default function CountryDetailPage() {
                 <div className="space-y-2">
                   <p>
                     <span className="text-gray-500">Region:</span>{' '}
-                    {country.region}
+                    {country?.region}
                   </p>
                   <p>
                     <span className="text-gray-500">Population:</span>{' '}
-                    {country.population.toLocaleString()}
+                    {country?.population?.toLocaleString()}
                   </p>
-                  {country.capital && (
+                  {country?.capital && (
                     <p>
                       <span className="text-gray-500">Capital:</span>{' '}
-                      {country.capital.join(', ')}
+                      {country?.capital.join(', ')}
                     </p>
                   )}
                 </div>
@@ -98,11 +99,11 @@ export default function CountryDetailPage() {
             </div>
 
             <div className="space-y-4">
-              {country.currencies && (
+              {country?.currencies && (
                 <div>
                   <h3 className="font-semibold mb-2">Currencies</h3>
                   <div className="flex flex-wrap gap-2">
-                    {Object.entries(country.currencies).map(([code, currency]) => (
+                    {Object.entries(country?.currencies)?.map(([code, currency]) => (
                       <span 
                         key={code}
                         className="px-2 py-1 text-sm bg-gray-100 rounded-full"
@@ -116,11 +117,11 @@ export default function CountryDetailPage() {
 
               <hr className="border-gray-200" />
 
-              {country.languages && (
+              {country?.languages && (
                 <div>
                   <h3 className="font-semibold mb-2">Languages</h3>
                   <div className="flex flex-wrap gap-2">
-                    {Object.values(country.languages).map((language) => (
+                    {Object.values(country?.languages)?.map((language) => (
                       <span 
                         key={language}
                         className="px-2 py-1 text-sm border border-gray-300 rounded-full"
@@ -137,7 +138,7 @@ export default function CountryDetailPage() {
               <div>
                 <h3 className="font-semibold mb-2">Timezones</h3>
                 <div className="flex flex-wrap gap-2">
-                  {country.timezones.map((timezone) => (
+                  {country?.timezones?.map((timezone) => (
                     <span 
                       key={timezone}
                       className="px-2 py-1 text-sm bg-gray-100 rounded-full"
