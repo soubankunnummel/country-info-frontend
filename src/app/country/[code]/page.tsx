@@ -29,8 +29,7 @@ export default function CountryDetailPage() {
       </div>
     );
   }
-// console.log(`show country page ${JSON.stringify(country.status === "error")}`)
-  if (country?.status === "error") {
+  if (!country || country.status === "error") {
     return (
       <div className="container mx-auto p-6 text-center">
         <h1 className="text-2xl font-bold mb-4">Country not found</h1>
